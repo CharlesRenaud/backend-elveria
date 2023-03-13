@@ -41,7 +41,7 @@ exports.createMonster = (req, res, next) => {
         defense: req.body.defense,
       },
       description: req.body.description,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/monster/${fileName}`,
+      imageUrl: `https://elveria-api.devcarl.fr/images/monster/${fileName}`,
       family: req.body.family,
       creator: creator,
       lastUpdatedTime: lastUpdatedTime,
@@ -105,7 +105,7 @@ exports.modifyMonster = (req, res, next) => {
 
     if (decodedToken.isAdmin) {
       const fileName = req.file.filename;
-      monsterData.imageUrl = `${req.protocol}://${req.get("host")}/images/monster/${fileName}`;
+      monsterData.imageUrl = `https://elveria-api.devcarl.fr/images/monster/${fileName}`;
 
       const filePath = uploadDir + fileName;
       const filePathMove = imageDir + fileName;

@@ -6,7 +6,7 @@ exports.createThing = (req, res, next) => {
     delete thingObject._id;
     const thing = new Thing({
         ...thingObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `https://elveria-api.devcarl.fr/images/${req.file.filename}`
     });
     thing.save()
         .then(() => res.status(201).json({ message: 'Objet enregistré' }))
@@ -17,7 +17,7 @@ exports.modifyThings = (req, res, next) => {
     const thingObject = req.file ? 
         {
           ...JSON.parse(req.body.thing),
-          imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
+          imageUrl: `https://elveria-api.devcarl.fr/images/${req.file.filename}`,
         }
       : { ...req.body };
     Thing.updateOne({ _id: req.params.id }, { ...thingObject, _id: req.params.id })

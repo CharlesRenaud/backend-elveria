@@ -37,7 +37,7 @@ exports.createMap = (req, res, next) => {
           const map = new Map({
             pseudo: req.body.pseudo,
             description: req.body.description,
-            imageUrl: `${req.protocol}://${req.get('host')}/images/map/${fileName}`,
+            imageUrl: `https://elveria-api.devcarl.fr/images/map/${fileName}`,
             theme: req.body.theme,
             creator: creator,
             lastUpdatedTime: lastUpdatedTime,
@@ -103,7 +103,7 @@ exports.modifyMap = (req, res, next) => {
       }
     });
   
-    mapData.imageUrl = `${req.protocol}://${req.get("host")}/images/map/${fileName}`;
+    mapData.imageUrl = `https://elveria-api.devcarl.fr/images/map/${fileName}`;
     const filePath = uploadDir + fileName;
     const filePathMove = imageDir + fileName;
     fs.rename(req.file.path, filePathMove, (err) => {

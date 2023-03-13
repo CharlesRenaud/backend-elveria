@@ -45,11 +45,11 @@ require('dotenv').config()
 password = process.env.password
 
 mongoose.connect(
-  `mongodb+srv://vilpex:${password}@cluster0.aytjmvc.mongodb.net/?retryWrites=true&w=majority`,
+  `mongodb+srv://vilpex:5nsMqZzIzgylSZE8@cluster0.aytjmvc.mongodb.net/?retryWrites=true&w=majority`,
   { useNewUrlParser: true, 
     useUnifiedTopology: true })
     .then(() => console.log('Connection à MongoDB réussie'))
-    .catch(() => console.log('Connection à MongoDB échouée'));
+    .catch((error) => console.log('Connection à MongoDB échouée' + error));
 
 const app = express();    
 
@@ -72,6 +72,8 @@ app.use('/api/map', mapRoutes);
 app.use('/api/log', logRoutes);
 app.use('/api/equipment', equipmentRoutes);
 
-
+app.get('/api', (req, res) => {
+  res.send('Hello World!');
+});
 
 module.exports = app;

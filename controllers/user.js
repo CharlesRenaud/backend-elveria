@@ -24,7 +24,7 @@ exports.signup = (req, res, next) => {
           console.log('Image not found: ' + imagePath);
           return res.status(400).json({ error: "Image not found" });
         }
-        image = `${req.protocol}://${req.get('host')}/images/user/${fileName}`;
+        image = `https://elveria-api.devcarl.fr/images/user/${fileName}`;
       }
       const user = new User({
         email: req.body.email,

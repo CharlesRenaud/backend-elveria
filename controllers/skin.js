@@ -20,7 +20,7 @@ exports.createSkin = async (req, res, next) => {
   const skin = new Skin({
     pseudo: req.body.pseudo,
     description: req.body.description,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/equipment/${req.body.level}/${req.body.type}/${fileName}`,
+    imageUrl: `https://elveria-api.devcarl.fr/images/equipment/${req.body.level}/${req.body.type}/${fileName}`,
     type: req.body.type,
     level: req.body.level,
     creator: creator,
@@ -73,7 +73,7 @@ exports.modifySkin = async (req, res, next) => {
       }
     });
 
-    skinData.imageUrl = `${req.protocol}://${req.get("host")}/images/equipment/${skinData.level}/${skinData.type}/${fileName}`;
+    skinData.imageUrl = `https://elveria-api.devcarl.fr/images/equipment/${skinData.level}/${skinData.type}/${fileName}`;
     const filePath = uploadDir + fileName;
     const filePathMove = skinDir + skinData.level + '/' + skinData.type + '/' + fileName;
     fs.rename(req.file.path, filePathMove, (err) => {
